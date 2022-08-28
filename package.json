@@ -1,0 +1,17 @@
+{
+  "name": "keke",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cloclin.js",
+  "scripts": {
+    "in": "node clockIn.js",
+    "out": "node clockOut.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mocha": "^10.0.0",
+    "puppeteer": "^16.2.0"
+  }
+}
