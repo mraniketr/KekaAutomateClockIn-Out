@@ -24,7 +24,7 @@ puppeteer
     await new Promise((r) => setTimeout(r, 1000));
     await page.type("#password", process.env.PASSWORD);
     await page.click(".login-from-btn");
-
+    console.log("Logged In");
     await page.waitForSelector(
       "home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div:nth-child(1) > div > button"
     );
@@ -33,11 +33,11 @@ puppeteer
     );
 
     await page.waitForSelector(
-      "body > xhr-app-root > div > xhr-home > div > home-dashboard > div > div > div > div > div:nth-child(2) > div > div:nth-child(5) > div:nth-child(6) > home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div > div:nth-child(1) > button.btn.btn-danger.btn-x-sm.mr-10"
+      "home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div > div:nth-child(1) > button.btn.btn-danger.btn-x-sm.mr-10"
     );
 
     await page.click(
-      "body > xhr-app-root > div > xhr-home > div > home-dashboard > div > div > div > div > div:nth-child(2) > div > div:nth-child(5) > div:nth-child(6) > home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div > div:nth-child(1) > button.btn.btn-danger.btn-x-sm.mr-10"
+      "home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div > div:nth-child(1) > button.btn.btn-danger.btn-x-sm.mr-10"
     );
     console.log("SUCCESSFULLY LOGGED OUT");
     await browser.close();
