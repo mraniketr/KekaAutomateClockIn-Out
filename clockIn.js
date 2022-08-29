@@ -42,6 +42,6 @@ puppeteer
     await page.waitForSelector(
       "home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div:nth-child(1) > div > button"
     );
-    console.log("SUCCESSFULLY LOGGED IN");
+    console.log("SUCCESSFULLY Clocked IN");
     await browser.close();
   });
