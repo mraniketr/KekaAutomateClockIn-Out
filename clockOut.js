@@ -29,22 +29,19 @@ puppeteer
     console.log("4");
     await page.evaluate(() => $("form")[0].submit());
     console.log("logged In ");
+    try {
+      while (
+        await page.waitForSelector(
+          "home-attendance-clockin-widget  .btn-danger"
+        )
+      ) {
+        await new Promise((r) => setTimeout(r, 1000));
+        await page.click("home-attendance-clockin-widget  .btn-danger");
+      }
+    } catch (E) {
+      console.log("Clock out done");
+    }
 
-    await page.waitForSelector(
-      "home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div:nth-child(1) > div > button"
-    );
-    await page.click(
-      "home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div:nth-child(1) > div > button"
-    );
-
-    await page.waitForSelector(
-      "body > xhr-app-root > div > xhr-home > div > home-dashboard > div > div > div > div > div:nth-child(2) > div > div:nth-child(5) > div:nth-child(6) > home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div:nth-child(1) > div > button"
-    );
-
-    await page.click(
-      "body > xhr-app-root > div > xhr-home > div > home-dashboard > div > div > div > div > div:nth-child(2) > div > div:nth-child(5) > div:nth-child(6) > home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div:nth-child(1) > div > button"
-    );
-    await new Promise((r) => setTimeout(r, 1000));
     console.log("SUCCESSFULLY LOGGED OUT");
 
     await browser.close();
