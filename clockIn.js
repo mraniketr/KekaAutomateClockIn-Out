@@ -47,4 +47,5 @@ puppeteer
     );
     console.log("SUCCESSFULLY Clocked IN");
     await browser.close();
-  });
+  })
+  .catch((err) => console.log(err));

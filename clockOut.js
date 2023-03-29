@@ -14,17 +14,22 @@ puppeteer
       longitude: Number(process.env.LONGITUDE),
     });
 
+    console.log("Start ");
     await page.goto(process.env.URI);
     await page.waitForSelector("#email");
+    console.log("2");
     await page.type("#email", process.env.EMAIL);
-    await page.click(".login-from-btn");
-    await page.waitForSelector(".btn-keka-login");
-    await page.click(".btn-keka-login");
+    await page.evaluate(() => $("form")[0].submit());
+    await page.waitForSelector(".login-option");
+    console.log("3");
+    await page.evaluate(() => $(".login-option>button")[1].click());
     await page.waitForSelector("#password");
     await new Promise((r) => setTimeout(r, 1000));
     await page.type("#password", process.env.PASSWORD);
-    await page.click(".login-from-btn");
-    console.log("Logged In");
+    console.log("4");
+    await page.evaluate(() => $("form")[0].submit());
+    console.log("logged In ");
+
     await page.waitForSelector(
       "home-attendance-clockin-widget > div > div.card-body.clear-padding.d-flex.flex-column.justify-content-between > div > div.h-100.d-flex.align-items-center > div > div.d-flex.align-items-center > div:nth-child(1) > div > button"
     );
@@ -43,4 +48,5 @@ puppeteer
     console.log("SUCCESSFULLY LOGGED OUT");
 
     await browser.close();
-  });
+  })
+  .catch((err) => console.log(err));
